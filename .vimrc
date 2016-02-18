@@ -1,3 +1,14 @@
+" Author: MasterSergius
+"
+" Description: this .vimrc-file composed from different sources, tutorials,
+" vimrc-files of others, etc. Some settings written manually to fit my needs.
+" You can use this file in any way you want (just github open source license).
+"
+" Note: to use this vimrc as-is, you have to install Pathogen and plugins:
+"   - NERDTree,
+"   - airline
+"   - airline-themes
+
 " # BASIC OPTIONS
 set nocompatible
 set number
@@ -17,7 +28,7 @@ autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
 " set terminal colormode, must be set before any colorschemes and highlights
 set t_Co=256
 set background=dark
-" set own colors
+" set own colors, some number-color mappings:
 " 1 - red, 2 - green, 3 - orange, 4 - cyan, 5 - magenta,
 " 6 - lightblue, 7 - lightgray, 8 - gray, 9 - pink, 10 - lightgreen
 " 11 - yellow, 12 - blue, 13 - lightpink, 14 - greenblue
@@ -120,7 +131,7 @@ nmap <leader>T :enew<cr>
 " Move to the next buffer
 nmap ,l :bnext<CR>
 
-" " Move to the previous buffer
+" Move to the previous buffer
 nmap ,h :bprevious<CR>
 
 " Close the current buffer and move to the previous one
