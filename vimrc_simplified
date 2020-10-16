@@ -1,0 +1,70 @@
+" basic options
+set nocompatible
+set hidden
+set expandtab
+set tabstop=4
+set softtabstop=0
+set shiftwidth=4
+set number
+set relativenumber
+
+syntax on
+
+set autoindent
+
+" color scheme, installed with command: git clone https://github.com/morhetz/gruvbox.git ~/.vim/pack/default/start/gruvbox
+set background=dark
+autocmd vimenter * colorscheme gruvbox
+
+" - Highlight search
+set hls
+" - Higlight line under cursos
+set cursorline
+highlight CursorLine ctermbg=8 cterm=None
+" Color column
+if exists('+colorcolumn')
+    set colorcolumn=80
+    highlight ColorColumn ctermbg=8
+else
+    highlight ColorColumn ctermbg=11
+    au BufWinEnter,InsertLeave python match ColorColumn '\%<81v.\%>80v'
+endif
+
+" -- zsh style
+set wildmenu
+set wildmode=full
+" -- bash style
+"set wildmode=longest,list
+" - Show partial commands in the last line of the screen
+set showcmd
+" - Display cursor position
+set ruler
+" - Always display the status line, even if only one window is displayed
+set laststatus=2
+" No backup and swap
+set nobackup
+set nowritebackup
+set noswapfile
+" Backspace
+set backspace=indent,eol,start
+" - bind \q for nohlsearch
+nmap \q :nohlsearch<CR>
+" - Easier moving of selected code blocks
+vnoremap < <gv
+vnoremap > >gv
+
+" Autocompletion
+filetype plugin on
+
+" Show whitespace
+highlight ExtraWhitespace ctermbg=red
+au InsertLeave * match ExtraWhitespace /\s\+$/
+
+" # AUTOCOMMANDS
+" Remove any trailing whitespace that is in the file
+autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+" Update VIM after writing .vimrc (no need to reload)
+autocmd! bufwritepost .vimrc source %
+
+" uncomment to make recursive search
+"set path+=**
